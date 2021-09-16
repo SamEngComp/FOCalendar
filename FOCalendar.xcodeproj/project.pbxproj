@@ -8,12 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		3950D10026F38136003D3E97 /* FOCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3950D0FE26F38136003D3E97 /* FOCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3950D11926F38836003D3E97 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D10C26F38836003D3E97 /* CalendarCollectionViewCell.swift */; };
+		3950D11A26F38836003D3E97 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D10D26F38836003D3E97 /* CalendarHeaderView.swift */; };
+		3950D11B26F38836003D3E97 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D10E26F38836003D3E97 /* CalendarView.swift */; };
+		3950D11C26F38836003D3E97 /* GeneratorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11026F38836003D3E97 /* GeneratorDate.swift */; };
+		3950D11D26F38836003D3E97 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11126F38836003D3E97 /* Day.swift */; };
+		3950D11E26F38836003D3E97 /* RemoteGeneratorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11226F38836003D3E97 /* RemoteGeneratorDate.swift */; };
+		3950D11F26F38836003D3E97 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11326F38836003D3E97 /* Month.swift */; };
+		3950D12026F38836003D3E97 /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11526F38836003D3E97 /* CalendarPresenter.swift */; };
+		3950D12126F38836003D3E97 /* ModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11726F38836003D3E97 /* ModelError.swift */; };
+		3950D12226F38836003D3E97 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11826F38836003D3E97 /* DataExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3950D0FB26F38136003D3E97 /* FOCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FOCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3950D0FE26F38136003D3E97 /* FOCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FOCalendar.h; sourceTree = "<group>"; };
 		3950D0FF26F38136003D3E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3950D10C26F38836003D3E97 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		3950D10D26F38836003D3E97 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
+		3950D10E26F38836003D3E97 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		3950D11026F38836003D3E97 /* GeneratorDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorDate.swift; sourceTree = "<group>"; };
+		3950D11126F38836003D3E97 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		3950D11226F38836003D3E97 /* RemoteGeneratorDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteGeneratorDate.swift; sourceTree = "<group>"; };
+		3950D11326F38836003D3E97 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		3950D11526F38836003D3E97 /* CalendarPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
+		3950D11726F38836003D3E97 /* ModelError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelError.swift; sourceTree = "<group>"; };
+		3950D11826F38836003D3E97 /* DataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +66,52 @@
 		3950D0FD26F38136003D3E97 /* FOCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				3950D11626F38836003D3E97 /* Helpers */,
+				3950D10F26F38836003D3E97 /* Model */,
+				3950D10B26F38836003D3E97 /* View */,
+				3950D11426F38836003D3E97 /* Presenter */,
 				3950D0FE26F38136003D3E97 /* FOCalendar.h */,
 				3950D0FF26F38136003D3E97 /* Info.plist */,
 			);
 			path = FOCalendar;
+			sourceTree = "<group>";
+		};
+		3950D10B26F38836003D3E97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3950D10C26F38836003D3E97 /* CalendarCollectionViewCell.swift */,
+				3950D10D26F38836003D3E97 /* CalendarHeaderView.swift */,
+				3950D10E26F38836003D3E97 /* CalendarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3950D10F26F38836003D3E97 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3950D11026F38836003D3E97 /* GeneratorDate.swift */,
+				3950D11126F38836003D3E97 /* Day.swift */,
+				3950D11226F38836003D3E97 /* RemoteGeneratorDate.swift */,
+				3950D11326F38836003D3E97 /* Month.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3950D11426F38836003D3E97 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3950D11526F38836003D3E97 /* CalendarPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3950D11626F38836003D3E97 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3950D11726F38836003D3E97 /* ModelError.swift */,
+				3950D11826F38836003D3E97 /* DataExtension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +192,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3950D11926F38836003D3E97 /* CalendarCollectionViewCell.swift in Sources */,
+				3950D11A26F38836003D3E97 /* CalendarHeaderView.swift in Sources */,
+				3950D11F26F38836003D3E97 /* Month.swift in Sources */,
+				3950D11B26F38836003D3E97 /* CalendarView.swift in Sources */,
+				3950D12026F38836003D3E97 /* CalendarPresenter.swift in Sources */,
+				3950D12126F38836003D3E97 /* ModelError.swift in Sources */,
+				3950D11D26F38836003D3E97 /* Day.swift in Sources */,
+				3950D11C26F38836003D3E97 /* GeneratorDate.swift in Sources */,
+				3950D11E26F38836003D3E97 /* RemoteGeneratorDate.swift in Sources */,
+				3950D12226F38836003D3E97 /* DataExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
