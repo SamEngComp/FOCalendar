@@ -1,12 +1,12 @@
 import Foundation
 import UIKit
 
-enum ModeCalendarView {
+public enum ModeCalendarView {
     case compact
     case expand
 }
 
-class CalendarView: UIView {
+public class FOCalendarView: UIView {
     private var presenter: CalendarPresenter?
     private let headerView = CalendarHeaderView()
     
@@ -93,7 +93,7 @@ class CalendarView: UIView {
     }
 }
 
-extension CalendarView: CalendarViewDelegate {
+extension FOCalendarView: CalendarViewDelegate {
     func generateDaysInWeek(days: [Day]) {
         self.days = days
         collectionView.reloadData()
@@ -109,12 +109,12 @@ extension CalendarView: CalendarViewDelegate {
     }
 }
 
-extension CalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return days?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarCollectionViewCell.reuseIdentifier, for: indexPath) as? CalendarCollectionViewCell else { fatalError() }
         let calendar = Calendar.current
         
@@ -177,7 +177,7 @@ extension CalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 }
 
-extension CalendarView: UICollectionViewDelegateFlowLayout {
+extension FOCalendarView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else { return }
        
@@ -185,14 +185,14 @@ extension CalendarView: UICollectionViewDelegateFlowLayout {
         cell.updateSelectionStatus()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = Int(collectionView.frame.width / 7)
         let height = Int(collectionView.frame.height) / numberOfWeeksInBaseDate
         return CGSize(width: width, height: height)
       }
 }
 
-extension CalendarView: CalendarHeaderViewDelegate {
+extension FOCalendarView: CalendarHeaderViewDelegate {
     func didTapPreviousMonthButton(sender: UIButton) {
         let date = self.calendar.date(
             byAdding: .month,
@@ -220,7 +220,7 @@ extension CalendarView: CalendarHeaderViewDelegate {
     }
 }
 
-extension CalendarView {
+extension FOCalendarView {
     private func setupDaysCheckAll(date: Date) {
         let calendar = Calendar.current
         let month = calendar.component(.month, from: date)
@@ -238,11 +238,11 @@ extension CalendarView {
         daysCheckDisplay.sort()
     }
     
-    func getModeCalendarView() -> ModeCalendarView {
+    public func getModeCalendarView() -> ModeCalendarView {
         return modeType ?? .compact
     }
     
-    func setModeCalendarView(for mode: ModeCalendarView) {
+    public func setModeCalendarView(for mode: ModeCalendarView) {
         switch mode {
         case .compact:
             headerView.titleMonthLabel.isHidden = true
@@ -278,7 +278,7 @@ extension CalendarView {
         }
     }
     
-    func setupCalendarView( modeCalendar: ModeCalendarView,
+    public func setupCalendarView( modeCalendar: ModeCalendarView,
                     days: Set<Date> = Set([]),
                     titleFont: UIFont = .systemFont(ofSize: 20),
                     titleColor: UIColor = .white,

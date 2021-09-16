@@ -10,7 +10,7 @@
 		3950D10026F38136003D3E97 /* FOCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 3950D0FE26F38136003D3E97 /* FOCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3950D11926F38836003D3E97 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D10C26F38836003D3E97 /* CalendarCollectionViewCell.swift */; };
 		3950D11A26F38836003D3E97 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D10D26F38836003D3E97 /* CalendarHeaderView.swift */; };
-		3950D11B26F38836003D3E97 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D10E26F38836003D3E97 /* CalendarView.swift */; };
+		3950D11B26F38836003D3E97 /* FOCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D10E26F38836003D3E97 /* FOCalendarView.swift */; };
 		3950D11C26F38836003D3E97 /* GeneratorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11026F38836003D3E97 /* GeneratorDate.swift */; };
 		3950D11D26F38836003D3E97 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11126F38836003D3E97 /* Day.swift */; };
 		3950D11E26F38836003D3E97 /* RemoteGeneratorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3950D11226F38836003D3E97 /* RemoteGeneratorDate.swift */; };
@@ -26,7 +26,7 @@
 		3950D0FF26F38136003D3E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3950D10C26F38836003D3E97 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		3950D10D26F38836003D3E97 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
-		3950D10E26F38836003D3E97 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		3950D10E26F38836003D3E97 /* FOCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FOCalendarView.swift; sourceTree = "<group>"; };
 		3950D11026F38836003D3E97 /* GeneratorDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorDate.swift; sourceTree = "<group>"; };
 		3950D11126F38836003D3E97 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		3950D11226F38836003D3E97 /* RemoteGeneratorDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteGeneratorDate.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 			children = (
 				3950D10C26F38836003D3E97 /* CalendarCollectionViewCell.swift */,
 				3950D10D26F38836003D3E97 /* CalendarHeaderView.swift */,
-				3950D10E26F38836003D3E97 /* CalendarView.swift */,
+				3950D10E26F38836003D3E97 /* FOCalendarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 				3950D11926F38836003D3E97 /* CalendarCollectionViewCell.swift in Sources */,
 				3950D11A26F38836003D3E97 /* CalendarHeaderView.swift in Sources */,
 				3950D11F26F38836003D3E97 /* Month.swift in Sources */,
-				3950D11B26F38836003D3E97 /* CalendarView.swift in Sources */,
+				3950D11B26F38836003D3E97 /* FOCalendarView.swift in Sources */,
 				3950D12026F38836003D3E97 /* CalendarPresenter.swift in Sources */,
 				3950D12126F38836003D3E97 /* ModelError.swift in Sources */,
 				3950D11D26F38836003D3E97 /* Day.swift in Sources */,
