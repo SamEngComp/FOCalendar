@@ -71,7 +71,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             guard let day = day else { return }
 
             numberLabel.text = day.number
-            accessibilityLabel = accessibilityDateFormatter.string(from: day.date)
+            //accessibilityLabel = accessibilityDateFormatter.string(from: day.date)
             updateSelectionStatus()
         }
     }
@@ -79,8 +79,8 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        isAccessibilityElement = true
-        accessibilityTraits = .button
+        //isAccessibilityElement = true
+        //accessibilityTraits = .button
     }
 
     required init?(coder: NSCoder) {
@@ -119,16 +119,16 @@ extension CalendarCollectionViewCell {
   }
     
   func applySelectedStyle() {
-    accessibilityTraits.insert(.selected)
-    accessibilityHint = nil
+    //accessibilityTraits.insert(.selected)
+    //accessibilityHint = nil
     numberLabel.textColor = day?.isSelected ?? false ? selectNumberColor ?? .white : numberLabel.textColor
     selectionBackgroundView.isHidden = day?.isSelected ?? false ? false : true
     numberLabel.textColor = isRange ?? false ? selectNumberColor ?? .white : numberLabel.textColor
   }
 
   func applyDefaultStyle(isWithinDisplayedMonth: Bool) {
-    accessibilityTraits.remove(.selected)
-    accessibilityHint = "Tap to select"
+    //accessibilityTraits.remove(.selected)
+    //accessibilityHint = "Tap to select"
 
     numberLabel.textColor = isWithinDisplayedMonth ? numberLabel.textColor : numberLabel.textColor.withAlphaComponent(0.5)
     selectionBackgroundView.isHidden = true

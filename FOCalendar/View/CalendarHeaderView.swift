@@ -18,8 +18,8 @@ class CalendarHeaderView: UIView {
         label.textColor = .black
         label.textAlignment = .center
         label.text = "Month"
-        label.accessibilityTraits = .header
-        label.isAccessibilityElement = true
+        //label.accessibilityTraits = .header
+        //label.isAccessibilityElement = true
         return label
     }()
     
@@ -107,7 +107,7 @@ class CalendarHeaderView: UIView {
             dayLabel.textColor = .secondaryLabel
             dayLabel.textAlignment = .center
             dayLabel.text = "\(dayOfWeekLetter)"
-            dayLabel.isAccessibilityElement = false
+            //dayLabel.isAccessibilityElement = false
             dayOfWeekLetterLabels.append(dayLabel)
             dayOfWeekStackView.addArrangedSubview(dayLabel)
         }

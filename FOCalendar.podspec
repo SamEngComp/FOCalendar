@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "FOCalendar"
   spec.version      = "0.0.1"
-  spec.summary      = "A short description of FOCalendar."
+  spec.summary      = "A CocoaPods library written in Swift"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -62,7 +62,9 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  spec.platform     = :ios, "11.0"
+  spec.platform     = :ios, "13.0"
+  spec.ios.deployment_target = "13.0"
+  spec.swift_version = "5.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -89,7 +91,6 @@ Pod::Spec.new do |spec|
   #
 
   spec.source_files  = "FOCalendar/**/*.{h,m,swift}"
-
   # spec.public_header_files = "Classes/**/*.h"
 
 
