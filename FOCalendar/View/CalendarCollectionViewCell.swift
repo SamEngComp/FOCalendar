@@ -140,7 +140,7 @@ extension CalendarCollectionViewCell {
     func setupSelectionBackgroundView(for type: SelectionViewType) {
         switch type {
         case .begin:
-            selectionBackgroundView.layer.borderWidth = 3
+            selectionBackgroundView.layer.borderWidth = 0
             selectionBackgroundView.layer.masksToBounds = false
         
             selectionBackgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
@@ -148,11 +148,11 @@ extension CalendarCollectionViewCell {
             selectionBackgroundView.layer.isHidden = true
             //selectionBackgroundView.backgroundColor = .clear
         case .medium:
-            selectionBackgroundView.layer.borderWidth = 3
+            selectionBackgroundView.layer.borderWidth = 0
             selectionBackgroundView.layer.cornerRadius = 0
             //selectionBackgroundView.backgroundColor = .clear
         case .last:
-            selectionBackgroundView.layer.borderWidth = 3
+            selectionBackgroundView.layer.borderWidth = 0
             selectionBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
             selectionBackgroundView.layer.cornerRadius = (self.frame.size.height*0.7)/2
             //selectionBackgroundView.backgroundColor = .clear

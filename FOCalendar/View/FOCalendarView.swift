@@ -63,6 +63,7 @@ public class FOCalendarView: UIView {
         self.presenter?.generateDaysInMonth(for: baseDate)
         //self.collectionView.reloadData()
         self.modeType = .compact
+        setupCalendarView(modeCalendar: .compact)
     }
     
     required init?(coder: NSCoder) {
@@ -85,7 +86,7 @@ public class FOCalendarView: UIView {
             headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 50),
             
-            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 30),
+            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -139,10 +140,10 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
                             initialElement = true
                         } else if initialElement == true {
                             type = .medium
-                            let dayTest = calendar.component(.day, from: Date())
-                            if dayTest == daysCheckDisplay[indexHelper+1] {
-                                type = .last
-                            }
+//                            let dayTest = calendar.component(.day, from: Date())
+//                            if dayTest == daysCheckDisplay[indexHelper+1] {
+//                                type = .last
+//                            }
                         }
                     } else {
                         let dayTest = calendar.component(.day, from: Date())
@@ -278,7 +279,50 @@ extension FOCalendarView {
         }
     }
     
-    public func setupCalendarView( modeCalendar: ModeCalendarView,
+    public func setTypeCalendar(_ type: ModeCalendarView) {
+        setModeCalendarView(for: type)
+    }
+    
+    public func setDays(_ days: Set<Date>) {
+        daysCheckAll = days
+        setupDaysCheckAll(date: Date())
+    }
+    
+    public func setTitleStyle(titleFont: UIFont, titleColor: UIColor) {
+        headerView.titleMonthLabel.font = titleFont
+        headerView.titleMonthLabel.textColor = titleColor
+        
+    }
+    
+    public func setWeekStyle(weekStackFont: UIFont, weekStackColor: UIColor) {
+        headerView.dayOfWeekLetterLabels.forEach { label in
+            label.font = weekStackFont
+            label.textColor = weekStackColor
+        }
+    }
+    
+    public func setCellStyle(cellFont: UIFont, cellColor: UIColor) {
+        self.cellFont = cellFont
+        self.cellTextColor = cellColor
+    }
+    
+    public func setNextAndPreviousMonthColor(_ color: UIColor) {
+        headerView.nextMonthButton.tintColor = color
+        headerView.previousMonthButton.tintColor = color
+    }
+    
+    public func setSelectionRangeStyle(selectionRangeBackgroundColor: UIColor,selectionRangeBorderColor: UIColor, selectionRangeTextColor: UIColor) { 
+        self.selectionRangeBackgroundColor = selectionRangeBackgroundColor
+        self.selectionRangeBorderColor = selectionRangeBorderColor
+        self.selectionRangeTextColor = selectionRangeTextColor
+    }
+    
+    public func setSelectionCellStyle(selectionCellBackgroundColor: UIColor, selectionCellTextColor: UIColor) {
+        self.selectionBackgroundColor = selectionCellBackgroundColor
+        self.selectionCellTextColor = selectionCellTextColor
+    }
+    
+    private func setupCalendarView( modeCalendar: ModeCalendarView,
                     days: Set<Date> = Set([]),
                     titleFont: UIFont = .systemFont(ofSize: 20),
                     titleColor: UIColor = .white,

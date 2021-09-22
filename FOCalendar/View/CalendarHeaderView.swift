@@ -1,6 +1,6 @@
 import UIKit
 
-protocol CalendarHeaderViewDelegate: class {
+protocol CalendarHeaderViewDelegate: AnyObject {
     func didTapPreviousMonthButton(sender: UIButton)
     func didTapNextMonthButton(sender: UIButton)
 }
@@ -116,15 +116,15 @@ class CalendarHeaderView: UIView {
     func calendarHeaderConstraints() {
         NSLayoutConstraint.activate([
             previousMonthButton.topAnchor.constraint(equalTo: topAnchor),
-            previousMonthButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            previousMonthButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
             nextMonthButton.topAnchor.constraint(equalTo: topAnchor),
-            nextMonthButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            nextMonthButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         
             titleMonthLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleMonthLabel.topAnchor.constraint(equalTo: topAnchor),
             
-            dayOfWeekStackView.topAnchor.constraint(equalTo: titleMonthLabel.bottomAnchor, constant: 20),
+            dayOfWeekStackView.topAnchor.constraint(equalTo: titleMonthLabel.bottomAnchor, constant: 10),
             dayOfWeekStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             dayOfWeekStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
