@@ -1,5 +1,8 @@
 import Foundation
 import UIKit
+public protocol FOCalendarDelegate: AnyObject {
+    func captureCell(date: Date?)
+}
 
 public enum ModeCalendarView {
     case compact
@@ -7,6 +10,7 @@ public enum ModeCalendarView {
 }
 
 public class FOCalendarView: UIView {
+    private var calendarDelegate: FOCalendarDelegate?
     private var presenter: CalendarPresenter?
     private let headerView = CalendarHeaderView()
     
@@ -132,7 +136,7 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
                 cell.setSelectionBorderColor(color: selectionRangeBorderColor)
                 cell.setSelectionBackgroundColor(color: selectionRangeBackgroundColor)
                 cell.setIsRange(for: true)
-                print(daysCheckDisplay[indexHelper], comp)
+                //print(daysCheckDisplay[indexHelper], comp)
                 if indexHelper < daysCheckDisplay.count-1 {
                     if daysCheckDisplay[indexHelper] == daysCheckDisplay[indexHelper+1] - 1 {
                         if initialElement == false {
@@ -140,10 +144,10 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
                             initialElement = true
                         } else if initialElement == true {
                             type = .medium
-//                            let dayTest = calendar.component(.day, from: Date())
-//                            if dayTest == daysCheckDisplay[indexHelper+1] {
-//                                type = .last
-//                            }
+                            let dayTest = calendar.component(.day, from: Date())
+                            if dayTest == daysCheckDisplay[indexHelper+1] {
+                                type = .last
+                            }
                         }
                     } else {
                         let dayTest = calendar.component(.day, from: Date())
@@ -181,9 +185,7 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
 extension FOCalendarView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else { return }
-       
-        //cell.day?.isSelected = true
-        cell.updateSelectionStatus()
+        calendarDelegate?.captureCell(date: cell.day?.date)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -237,6 +239,10 @@ extension FOCalendarView {
             }
         }
         daysCheckDisplay.sort()
+    }
+    
+    public func setCalendarDelegate(_ delegate: FOCalendarDelegate) {
+        self.calendarDelegate = delegate
     }
     
     public func getModeCalendarView() -> ModeCalendarView {
@@ -311,7 +317,7 @@ extension FOCalendarView {
         headerView.previousMonthButton.tintColor = color
     }
     
-    public func setSelectionRangeStyle(selectionRangeBackgroundColor: UIColor,selectionRangeBorderColor: UIColor, selectionRangeTextColor: UIColor) { 
+    public func setSelectionRangeStyle(selectionRangeBackgroundColor: UIColor,selectionRangeBorderColor: UIColor, selectionRangeTextColor: UIColor) {
         self.selectionRangeBackgroundColor = selectionRangeBackgroundColor
         self.selectionRangeBorderColor = selectionRangeBorderColor
         self.selectionRangeTextColor = selectionRangeTextColor
