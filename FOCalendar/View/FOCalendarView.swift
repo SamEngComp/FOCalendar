@@ -10,6 +10,8 @@ public enum ModeCalendarView {
 }
 
 public class FOCalendarView: UIView {
+    private var cellTest: CalendarCollectionViewCell?
+    private var cellcolor: UIColor?
     private var calendarDelegate: FOCalendarDelegate?
     private var presenter: CalendarPresenter?
     private let headerView = CalendarHeaderView()
@@ -25,6 +27,9 @@ public class FOCalendarView: UIView {
     private var selectionRangeBorderColor: UIColor?
     private var selectionRangeTextColor: UIColor?
     private var modeType: ModeCalendarView?
+    
+    private var selectionDateColor: UIColor?
+    private var selectionDateBorder: CGFloat?
     
     private var indexHelper = 0
     private var initialElement = false
@@ -177,6 +182,7 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.setCellFont(font: cellFont)
         cell.setupSelectionBackgroundView(for: type)
         cell.day = day
+        cell.setSelectedDateColor(color: .clear)
         cell.startCell()
         return cell
     }
@@ -185,7 +191,15 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
 extension FOCalendarView: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalendarCollectionViewCell else { return }
+        
         calendarDelegate?.captureCell(date: cell.day?.date)
+        if let cellTest = cellTest {
+            cellTest.setSelectedDateColor(color: cellcolor ?? .clear)
+        }
+        cellcolor = cell.selectedBackgroundView?.backgroundColor
+        cell.setSelectedDateColor(color: selectionDateColor ?? .white)
+        cell.setSelectedDateBorderWidth(border: selectionDateBorder ?? 4)
+        cellTest = cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -294,10 +308,14 @@ extension FOCalendarView {
         setupDaysCheckAll(date: Date())
     }
     
+    public func setSelectionDateStyle(color: UIColor, border: CGFloat) {
+        selectionDateColor = color
+        selectionDateBorder = border
+    }
+    
     public func setTitleStyle(titleFont: UIFont, titleColor: UIColor) {
         headerView.titleMonthLabel.font = titleFont
         headerView.titleMonthLabel.textColor = titleColor
-        
     }
     
     public func setWeekStyle(weekStackFont: UIFont, weekStackColor: UIColor) {

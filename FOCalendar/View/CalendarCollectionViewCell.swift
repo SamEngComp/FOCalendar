@@ -27,6 +27,20 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var selectionDateBackgroundView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 4
+        view.layer.cornerRadius = (self.frame.size.height*0.7)/2
+        view.layer.masksToBounds = false
+        view.clipsToBounds = true
+        view.layer.borderColor = UIColor.clear.cgColor
+        
+        view.backgroundColor = .clear
+        
+        return view
+    }()
+    
     private lazy var helperViewRight: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +102,9 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     func hierarchyView() {
+        
         contentView.addSubview(selectionBackgroundView)
+        contentView.addSubview(selectionDateBackgroundView)
         contentView.addSubview(numberLabel)
         
         calendarCellConstraints()
@@ -101,7 +117,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             selectionBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
             selectionBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
             selectionBackgroundView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
-            selectionBackgroundView.widthAnchor.constraint(equalTo: widthAnchor)
+            selectionBackgroundView.widthAnchor.constraint(equalTo: widthAnchor),
+            selectionDateBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            selectionDateBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            selectionDateBackgroundView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
+            selectionDateBackgroundView.widthAnchor.constraint(equalTo: widthAnchor)
         ])
     }
 }
@@ -161,6 +181,14 @@ extension CalendarCollectionViewCell {
             selectionBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner,.layerMinXMinYCorner, .layerMinXMaxYCorner]
             selectionBackgroundView.layer.cornerRadius = (self.frame.size.height*0.7)/2
         }
+    }
+    
+    func setSelectedDateColor(color: UIColor) {
+        selectionDateBackgroundView.layer.borderColor = color.cgColor
+    }
+    
+    func setSelectedDateBorderWidth(border: CGFloat) {
+        selectionDateBackgroundView.layer.borderWidth = border
     }
     
     func startCell() {
