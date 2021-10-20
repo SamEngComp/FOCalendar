@@ -160,6 +160,8 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
                         if dayTest == daysCheckDisplay[indexHelper] {
                             cell.setSelectionBackgroundColor(color: selectionBackgroundColor)
                             cell.setSelectionCellTextColor(color: selectionCellTextColor)
+                        } else if indexHelper == 0 || (indexHelper > 0 && daysCheckDisplay[indexHelper] != daysCheckDisplay[indexHelper-1] + 1) {
+                            type = .normal
                         }
                         initialElement = false
                     }
@@ -170,6 +172,8 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
                         type = .normal
                         cell.setSelectionBackgroundColor(color: selectionBackgroundColor)
                         cell.setSelectionCellTextColor(color: selectionCellTextColor)
+                    } else if indexHelper == 0 || (indexHelper > 0 && daysCheckDisplay[indexHelper] != daysCheckDisplay[indexHelper-1] + 1) {
+                        type = .normal
                     }
                     initialElement = false
                 }
@@ -270,7 +274,7 @@ extension FOCalendarView {
             headerView.nextMonthButton.isHidden = true
             headerView.previousMonthButton.isHidden = true
             
-            let dateIntial = Date().previous(.monday)
+            let dateIntial = Date().previous(.monday, considerToday: true)
             
             modeType = .compact
             baseDate = Date()
