@@ -141,23 +141,27 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
                 cell.setSelectionBorderColor(color: selectionRangeBorderColor)
                 cell.setSelectionBackgroundColor(color: selectionRangeBackgroundColor)
                 cell.setIsRange(for: true)
-                //print(daysCheckDisplay[indexHelper], comp)
+                // print(daysCheckDisplay[indexHelper], comp)
+                let dayActual = calendar.component(.day, from: Date())
                 if indexHelper < daysCheckDisplay.count-1 {
                     if daysCheckDisplay[indexHelper] == daysCheckDisplay[indexHelper+1] - 1 {
                         if initialElement == false {
                             type = .begin
                             initialElement = true
+                            if dayActual == daysCheckDisplay[indexHelper+1] {
+                                type = .normal
+                            }
                         } else if initialElement == true {
                             type = .medium
-                            let dayTest = calendar.component(.day, from: Date())
-                            if dayTest == daysCheckDisplay[indexHelper+1] {
+                            // let dayTest = calendar.component(.day, from: Date())
+                            if dayActual == daysCheckDisplay[indexHelper+1] {
                                 type = .last
                             }
                         }
                     } else {
-                        let dayTest = calendar.component(.day, from: Date())
+                        // let dayTest = calendar.component(.day, from: Date())
                         type = .last
-                        if dayTest == daysCheckDisplay[indexHelper] {
+                        if dayActual == daysCheckDisplay[indexHelper] {
                             cell.setSelectionBackgroundColor(color: selectionBackgroundColor)
                             cell.setSelectionCellTextColor(color: selectionCellTextColor)
                         } else if indexHelper == 0 || (indexHelper > 0 && daysCheckDisplay[indexHelper] != daysCheckDisplay[indexHelper-1] + 1) {
@@ -166,9 +170,9 @@ extension FOCalendarView: UICollectionViewDataSource, UICollectionViewDelegate {
                         initialElement = false
                     }
                 } else {
-                    let dayTest = calendar.component(.day, from: Date())
+                    // let dayTest = calendar.component(.day, from: Date())
                     type = .last
-                    if dayTest == daysCheckDisplay[indexHelper] {
+                    if dayActual == daysCheckDisplay[indexHelper] {
                         type = .normal
                         cell.setSelectionBackgroundColor(color: selectionBackgroundColor)
                         cell.setSelectionCellTextColor(color: selectionCellTextColor)
@@ -259,6 +263,10 @@ extension FOCalendarView {
         daysCheckDisplay.sort()
     }
     
+    public func reloadCalendarCollection() {
+        self.collectionView.reloadData()
+    }
+    
     public func setCalendarDelegate(_ delegate: FOCalendarDelegate) {
         self.calendarDelegate = delegate
     }
@@ -274,8 +282,8 @@ extension FOCalendarView {
             headerView.nextMonthButton.isHidden = true
             headerView.previousMonthButton.isHidden = true
             
-            let dateIntial = Date().previous(.monday, considerToday: true)
-            
+            let dateIntial = Date().previous(.sunday, considerToday: true)
+            // print(dateIntial)
             modeType = .compact
             baseDate = Date()
             setupDaysCheckAll(date: Date())

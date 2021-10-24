@@ -7,7 +7,7 @@ protocol CalendarHeaderViewDelegate: AnyObject {
 
 class CalendarHeaderView: UIView {
     
-    private let dayOfWeekLetters = "STQQSSD"
+    private let dayOfWeekLetters = "DSTQQSS"
     var dayOfWeekLetterLabels = [UILabel]()
     weak var delegate: CalendarHeaderViewDelegate?
     
